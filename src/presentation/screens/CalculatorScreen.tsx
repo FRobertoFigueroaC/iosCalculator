@@ -9,6 +9,7 @@ export const CalculatorScreen = () => {
   const {
     number,
     previousNumber,
+    formula,
     buildNumber,
     calculateResult,
     clean,
@@ -23,11 +24,17 @@ export const CalculatorScreen = () => {
       <View style={{paddingHorizontal: 30, paddingBottom: 20}}>
         <Text adjustsFontSizeToFit numberOfLines={1}
           style={styles.mainResult}>
-          {number}
+          {formula}
         </Text>
-        <Text style={styles.subResult}>
-          {(previousNumber === '0') ? '' : previousNumber}
-        </Text>
+        {
+          (formula === previousNumber)
+          ? <Text style={styles.subResult}> </Text>
+          : (
+            <Text style={styles.subResult}>
+              {previousNumber}
+            </Text>
+          )
+        }
       </View>
 
       <View style={styles.row}>
